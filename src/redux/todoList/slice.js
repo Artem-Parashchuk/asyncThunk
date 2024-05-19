@@ -1,27 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit"
 // Створюємо початковий стан
 const initialState = {
-    todos: [
-        {
-            id: 1,
-            todo: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam explicabo ab magnam unde quidem esse?',
-            completed: false,
-            liked: false
-        },
-        {
-            id: 2,
-            todo: 'Lore explicabo ab magnam unde quidem esse?',
-            completed: false,
-            liked: false
-
-        },
-        {
-            id: 3,
-            todo: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam explic',
-            completed: false,
-            liked: false
-        },
-    ],
+    todos: [],
     isLoading: false,
     isError: false,
 

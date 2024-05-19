@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
 import { FaRegStar } from "react-icons/fa";
 import s from "./TodoItem.module.css";
-import { deleteTodo, likeTodo, toggleTodo } from "../redux/todoList/slice";
+import { likeTodo, toggleTodo } from "../redux/todoList/slice";
+import { deleteTodoThunk } from "../redux/todoList/operations";
 
 export const TodoItem = ({todo}) => {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const TodoItem = ({todo}) => {
       </label>
       <button
         className={s.btn}
-        onClick={() => dispatch(deleteTodo(todo.id))}
+        onClick={() => dispatch(deleteTodoThunk(todo.id))}
       >
         Delete
       </button>
