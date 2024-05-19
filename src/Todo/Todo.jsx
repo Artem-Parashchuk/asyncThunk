@@ -2,16 +2,18 @@ import { Field, Form, Formik } from "formik";
 import s from "./Todo.module.css";
 import { TodoList } from "../TodoList/TodoList";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, selectTodos } from "../redux/todoList/slice";
+import { selectIsLoading, selectTodos } from "../redux/todoList/slice";
 import {Filter} from '../Filter/Filter'
 import { useEffect } from "react";
-import { fetchTodosThunk } from "../redux/todoList/operations";
+import { addTodoThunk, fetchTodosThunk } from "../redux/todoList/operations";
+import { Loader } from "../Loader/Loader";
 export const Todo = () => {
   const todos = useSelector(selectTodos);
   const dispatch = useDispatch();
-
+    const isLoading = useSelector(selectIsLoading)
+    
   const handleSubmit = (values, options) => {
-    dispatch(addTodo(values.todo));
+    dispatch(addTodoThunk({todo: values.todo}));
     options.resetForm();
   };
 
@@ -21,7 +23,8 @@ export const Todo = () => {
 
 
   return (
-    <div> 
+    <div className={s.wrapper}> 
+       {isLoading && <Loader/>} 
       <Formik
         initialValues={{ todo: "" }}
         onSubmit={handleSubmit}

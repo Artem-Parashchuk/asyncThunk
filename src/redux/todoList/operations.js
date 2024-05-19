@@ -1,5 +1,5 @@
 import axios from "axios";
-import { deleteTodo, isError, isLoading, refetchDataSuccess } from "./slice";
+import { addTodo, deleteTodo, isError, isLoading, refetchDataSuccess } from "./slice";
 
 axios.defaults.baseURL = 'https://6649d3994032b1331beeebaf.mockapi.io/'
 
@@ -21,13 +21,27 @@ export const fetchTodosThunk = () => {
 
 export const deleteTodoThunk = (id) => {
     return async dispatch => {
-        try{
+        try {
             dispatch(isLoading(true))
             await axios.delete(`/Todos/${id}`)
             dispatch(deleteTodo(id))
-        }catch(error) {
+        } catch (error) {
             dispatch(isError(true))
-        }finally {
+        } finally {
+            dispatch(isLoading(false))
+        }
+    }
+}
+
+export const addTodoThunk = body => {
+    return async dispatch => {
+        try {
+            dispatch(isLoading(true))
+            const { data } = await axios.post("/Todos", body)
+            dispatch(addTodo(data))
+        } catch (error) {
+            dispatch(isError(true))
+        } finally {
             dispatch(isLoading(false))
         }
     }

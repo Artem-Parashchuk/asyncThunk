@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import s from "./Filter.module.css";
+import 'daisyui/dist/full.css';
+
 
 import clsx from "clsx";
 import { selectFilter, setFilter } from "../redux/filter/slice";

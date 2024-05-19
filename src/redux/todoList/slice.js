@@ -17,6 +17,8 @@ const slice = createSlice({
     // Створюємо селектори прямо в слайсі
     selectors: {
         selectTodos: state => state.todos,
+        selectIsLoading: state => state.isLoading,
+        selectIsError: state => state.isError
     },
 
     // Створюємо редюсери(екшени)
@@ -43,7 +45,7 @@ const slice = createSlice({
             prepare: todo => {
                 return {
                     payload: {
-                        todo,
+                        ...todo,
                         id: nanoid(),
                         completed: false,
                         liked: false
@@ -71,4 +73,4 @@ export const todoReducer = slice.reducer
 // Експорт екшенів - того, що написано в реюсерах
 export const { deleteTodo, toggleTodo, likeTodo, addTodo, refetchDataSuccess, isError, isLoading } = slice.actions;
 // Експорт селекторів
-export const { selectTodos } = slice.selectors
+export const { selectTodos, selectIsLoading, selectIsError } = slice.selectors
