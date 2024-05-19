@@ -1,0 +1,14 @@
+.wrapper_btn {
+    display: flex;
+    gap: 20px;
+}
+.btn {
+    padding: 5px;
+    font-size: 18px;
+    color: aliceblue;
+    background-color: blueviolet;
+}
+.btnSuccess{
+    background-color: rgb(43, 226, 177);
+    color: black;
+}

@@ -1,0 +1,24 @@
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    max-width: 300px;
+    width: 100%;
+    box-shadow: 0 0 2px 1px grey;
+    padding: 15px;
+
+}
+.text{
+padding: 5px;
+}
+.btn{
+  padding: 3px 8px;
+  background-color: darkblue;
+  color: aliceblue;
+}
+.btn_like {
+  padding: 3px 8px;
+  background-color: darkgreen;
+  color: aliceblue;
+}
